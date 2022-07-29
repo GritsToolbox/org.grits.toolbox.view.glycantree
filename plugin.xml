@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.grits.toolbox.view.glycantree.Perspective"
+            icon="icons/req_plugins_obj.gif"
+            id="org.grits.toolbox.glycantree.perspective"
+            name="Glycan Tree">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="true"
+            class="org.grits.toolbox.view.glycantree.views.GlycanTreeView"
+            icon="icons/req_plugins_obj.gif"
+            id="glycanytree"
+            name="Glycan Tree View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.grits.toolbox.core.menu.projectexplorer.popup.submenu.view">
+         <command
+               commandId="org.grits.toolbox.view.glycantree.ViewGlycanTree"
+               label="View Glycan Tree"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         id="handler1"
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.grits.toolbox.view.glycantree.command.ViewGlycanTree"
+            commandId="org.grits.toolbox.view.glycantree.ViewGlycanTree">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.grits.toolbox.view.glycantree.AnnotationPropertyTester"
+            id="org.grits.toolbox.view.glycantree.AnnotationPropertyTester"
+            namespace="org.grits.toolbox.view.glycantree"
+            properties="isAllowed"
+            type="org.grits.toolbox.core.datamodel.Entry">
+      </propertyTester>
+   </extension>
+
+</plugin>
